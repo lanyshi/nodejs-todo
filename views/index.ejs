@@ -8,7 +8,7 @@
     <title> Todo List </title>
 </head>
 <body>
-<div class="container">
+<div class="container" style="position: relative; top: 15%">
     <div class="row justify-content-center">
         <h2> Todo List </h2>
     </div>
@@ -17,20 +17,29 @@
         <div class="form-group col-md-6 mb-2">
             <input type="text" class="form-control" name="newtodo" placeholder="Enter a new task here">
         </div>
-        <button class="btn col-sm-1 mb-2"> Add Task </button>
+        <button class="btn btn-primary col-sm-1 mb-2"> Add Task </button>
     </form>
 
 <!--    <button formaction="/removetask" type="submit"> Remove </button>-->
-    <div class="row justify-content-center">
-        <ul class="list-group list-group-flush col-6">
-            <% for(var i = 0; i < todoList.length; i++) { %>
-            <li class="list-group-item"><input type="checkbox" name="complete" value="<%= todoList[i].name %>" /> <%= todoList[i].name %> </li>
-            <% } %>
-        </ul>
-    </div>
+    <form action="/completetodo" method="POST">
+        <div class="row justify-content-center">
+            <ul class="col-6">
+                <% for(var i = 0; i < todoList.length; i++) { %>
+                <li style="list-style: none"><input type="checkbox" name="completed" value="<%= todoList[i].name %>" onchange="this.form.submit()"/> <%= todoList[i].name %> </li>
+                <% } %>
+            </ul>
+        </div>
+    </form>
 
     <div class="row justify-content-center">
-        <h2> Completed task </h2>
+        <h2> Completed Tasks </h2>
+    </div>
+    <div class="row justify-content-center">
+        <ul class="col-6">
+            <% for(var i = 0; i < completedList.length; i++) { %>
+                <li style="list-style: none"><del> <%= completedList[i].name %> </del></li>
+            <% } %>
+        </ul>
     </div>
 </div>
 </body>
