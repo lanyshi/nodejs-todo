@@ -1,4 +1,4 @@
-# A Todo App - Node.js, Express and MongoDB
+# A Todo App - Node.js, Express.js and MongoDB
 This is a todo app built with Node.js, Express and MongoDB.
 
 ## Program Description
